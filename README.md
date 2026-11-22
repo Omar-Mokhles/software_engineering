@@ -1,3 +1,3 @@
 # Study Planner
 
-[Open the project documentation](docs/README.md)
+[Open the project documentation](docs/requirements.md)
