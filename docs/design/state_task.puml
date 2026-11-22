@@ -1,0 +1,20 @@
+@startuml
+title State Diagram: Task lifecycle - Study Planner
+skinparam nodesep 60
+skinparam ranksep 70
+
+[*] --> Pending : create task
+
+Pending --> InProgress : start work
+Pending --> Cancelled : cancel
+
+InProgress --> Completed : finish
+InProgress --> Cancelled : cancel
+
+Completed --> InProgress : reopen
+Cancelled --> Pending : restore
+
+Completed --> [*] : delete
+Cancelled --> [*] : delete
+
+@enduml

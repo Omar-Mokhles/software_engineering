@@ -9,7 +9,7 @@ Built with Django and PostgreSQL as a Software Engineering course project.
 | Deliverable | Link |
 |---|---|
 | Requirements (roles, user stories, acceptance criteria, NFRs, MoSCoW, MVP) | [docs/requirements.md](docs/requirements.md) |
-| Backlog (one GitHub Issue per user story and NFR) | [Issues](../../issues) |
+| Backlog (one GitHub Issue per user story and NFR) | [Issues](https://github.com/Omar-Mokhles/software_engineering/issues) |
 | Project board (Backlog, To Do, In Progress, Review, Done) | [Study Planner Board](https://github.com/users/Omar-Mokhles/projects/1) |
 | Designs: Use Case, Class, Sequence and State diagrams (PlantUML) | [docs/design](docs/design/README.md) |
 | UI/UX: wireframes and mockups | [Figma](https://www.figma.com/design/suiieemkPxgXjim7SlsBFo/Untitled?node-id=0-1&t=6B4VYXZhDQUdVbJI-1) |

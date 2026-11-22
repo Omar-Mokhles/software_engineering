@@ -1,0 +1,33 @@
+@startuml
+title Sequence Diagram: Update Task Status - Study Planner
+actor Student
+participant TaskView
+participant TaskForm
+database Database
+
+Student -> TaskView : POST /tasks/{id}/edit/ (status)
+
+alt student not logged in
+    TaskView --> Student : 302 Redirect to login
+else student logged in
+    TaskView -> Database : findTask(id, owner = user)
+    Database --> TaskView : task or none
+
+    alt task found and owned by student
+        TaskView -> TaskForm : TaskForm(data, task, user)
+        TaskView -> TaskForm : is_valid()
+
+        alt status valid
+            TaskView -> TaskForm : save()
+            TaskForm -> Database : updateTask(status)
+            Database --> TaskForm : task
+            TaskView --> Student : 302 Redirect to task details
+        else status invalid
+            TaskView --> Student : 200 Form with error message
+        end
+    else task not found or owned by another student
+        TaskView --> Student : 404 Not Found
+    end
+end
+
+@enduml

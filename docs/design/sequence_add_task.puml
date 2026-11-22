@@ -1,0 +1,28 @@
+@startuml
+title Sequence Diagram: Add Task - Study Planner
+actor Student
+participant TaskView
+participant TaskForm
+database Database
+
+Student -> TaskView : POST /tasks/new/ (subject, title, dueDate)
+
+alt student not logged in
+    TaskView --> Student : 302 Redirect to login
+else student logged in
+    TaskView -> TaskForm : TaskForm(data, user)
+    TaskForm -> Database : findSubjects(owner = user)
+    Database --> TaskForm : subjects
+    TaskView -> TaskForm : is_valid()
+
+    alt form valid
+        TaskView -> TaskForm : save()
+        TaskForm -> Database : insertTask(status = Pending)
+        Database --> TaskForm : task
+        TaskView --> Student : 302 Redirect to task list
+    else form invalid
+        TaskView --> Student : 200 Form with error messages
+    end
+end
+
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+title Sequence Diagram: Log In - Study Planner
+actor Visitor
+participant LoginView
+participant AuthenticationForm
+database Database
+
+Visitor -> LoginView : POST /accounts/login/ (username, password)
+LoginView -> AuthenticationForm : is_valid()
+AuthenticationForm -> Database : findUser(username)
+Database --> AuthenticationForm : user
+AuthenticationForm -> AuthenticationForm : checkPassword(password)
+
+alt credentials valid
+    AuthenticationForm --> LoginView : valid
+    LoginView --> Visitor : 302 Redirect to dashboard
+else credentials invalid
+    AuthenticationForm --> LoginView : invalid
+    LoginView --> Visitor : 200 Login page with error message
+end
+
+@enduml
