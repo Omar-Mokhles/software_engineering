@@ -1,0 +1,80 @@
+@startuml
+title Study Planner - Class Diagram
+left to right direction
+skinparam linetype ortho
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam nodesep 40
+skinparam ranksep 110
+
+class User {
+  - userId: int
+  - username: String
+  - password: String
+  --
+  + login()
+  + logout()
+}
+
+class Student {
+  --
+  + addSubject()
+  + addTask()
+}
+
+class Administrator {
+  --
+  + manageData()
+}
+
+class Subject {
+  - subjectId: int
+  - name: String
+  - description: String
+  - color: String
+  - createdAt: Date
+  --
+  + edit()
+  + delete()
+}
+
+class Task {
+  - taskId: int
+  - title: String
+  - description: String
+  - dueDate: Date
+  - status: TaskStatus
+  - createdAt: Date
+  - updatedAt: Date
+  --
+  + changeStatus()
+  + edit()
+  + delete()
+  + isOverdue(): boolean
+}
+
+enum TaskStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+User <|-- Student
+' Inheritance: Student is a type of User.
+
+User <|-- Administrator
+' Inheritance: Administrator is a type of User.
+
+Student "1" -- "0..*" Subject : owns
+' Association: One student owns zero or many subjects.
+' Each subject belongs to exactly one student.
+
+Subject "1" *-- "0..*" Task : contains
+' Composition: A task cannot exist without its subject.
+' Deleting a subject deletes all of its tasks.
+
+Task "0..*" -- "1" TaskStatus : has
+' Association: Each task has exactly one status.
+
+@enduml

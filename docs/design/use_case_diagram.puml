@@ -1,0 +1,71 @@
+@startuml
+title Study Planner - Use Case Diagram
+left to right direction
+
+actor Visitor
+actor "Registered User" as RU
+actor Student
+actor Administrator
+
+rectangle "Study Planner" {
+  usecase "Sign Up" as UC1
+  usecase "Log In" as UC2
+  usecase "Log Out" as UC3
+  usecase "Add Subject" as UC4
+  usecase "View Subjects" as UC5
+  usecase "Edit Subject" as UC6
+  usecase "Delete Subject" as UC7
+  usecase "View Subject Details" as UC8
+  usecase "Add Task" as UC9
+  usecase "View Tasks" as UC10
+  usecase "Update Task Status" as UC11
+  usecase "Edit Task" as UC12
+  usecase "Delete Task" as UC13
+  usecase "View Dashboard" as UC14
+  usecase "Filter Tasks" as UC15
+  usecase "Highlight Overdue Tasks" as UC16
+  usecase "Verify Ownership" as UC17
+  usecase "Manage Users and Data" as UC18
+  usecase "Search Records" as UC19
+
+  UC1 ..> UC2 : <<include>>
+
+  UC6 ..> UC17 : <<include>>
+  UC7 ..> UC17 : <<include>>
+  UC8 ..> UC17 : <<include>>
+  UC11 ..> UC17 : <<include>>
+  UC12 ..> UC17 : <<include>>
+  UC13 ..> UC17 : <<include>>
+
+  UC15 ..> UC10 : <<extend>>
+  UC16 ..> UC10 : <<extend>>
+  UC19 ..> UC18 : <<extend>>
+}
+
+RU <|-- Student
+RU <|-- Administrator
+
+Visitor -- UC1
+Visitor -- UC2
+RU -- UC3
+Student -- UC4
+Student -- UC5
+Student -- UC6
+Student -- UC7
+Student -- UC8
+Student -- UC9
+Student -- UC10
+Student -- UC11
+Student -- UC12
+Student -- UC13
+Student -- UC14
+Administrator -- UC18
+
+skinparam linetype ortho
+skinparam nodesep 40
+skinparam ranksep 90
+skinparam shadowing false
+skinparam backgroundColor white
+skinparam defaultFontSize 14
+
+@enduml
