@@ -1,6 +1,6 @@
 # Requirements: Study Planner
 
-> **GitHub Project board:** <PASTE_BOARD_LINK_HERE>  
+> **GitHub Project board:** <https://github.com/users/Omar-Mokhles/projects/1>  
 > **Backlog:** GitHub Issues of this repository (one Issue per user story and per NFR)
 
 ## 0. Project context and stakeholders
@@ -13,10 +13,6 @@ Study Planner is a web application that helps university students organize their
 | Administrator | Keep data and accounts healthy | Can change and delete any data |
 | Course instructor / TA | Evaluate the engineering process and deliverables | Grades the project |
 | Development team | Deliver a working MVP in the available weeks | Decide scope and priorities |
-
-### Client interview summary
-
-> TODO (team): replace this block with the real interview notes. Keep three headings: *Roles*, *Rules and limits*, *Quality expectations*. Every sentence that sounds like a need must map to a story below.
 
 ## 1. Roles
 
