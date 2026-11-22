@@ -16,7 +16,7 @@ class TaskForm(forms.ModelForm):
         model = Task
         fields = ['subject', 'title', 'description', 'due_date', 'status']
         widgets = {
-            'due_date': forms.DateInput(attrs={'type': 'datetime-local', 'class': 'form-control'}),
+            'due_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
             'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Task Title'}),
             'description': forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'placeholder': 'Task details'}),
             'subject': forms.Select(attrs={'class': 'form-select'}),
